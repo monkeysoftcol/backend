@@ -5,6 +5,9 @@
  */
 package co.com.monkey.dao;
 
+import co.com.monkey.dao.util.GenericDAO;
+import co.com.monkey.entities.AdminSolicitudMudanza;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
 /**
@@ -12,6 +15,12 @@ import javax.ejb.Stateless;
  * @author dsalamanca
  */
 @Stateless
-public class AdminSolicitudMudanzaDAO {
+public class AdminSolicitudMudanzaDAO extends GenericDAO<AdminSolicitudMudanza>{
+    
+    private static final Logger LOGGER = Logger.getLogger(AdminSolicitudMudanzaDAO.class.getSimpleName());
+
+    public AdminSolicitudMudanzaDAO() {
+        super(AdminSolicitudMudanza.class);
+    }
     
 }

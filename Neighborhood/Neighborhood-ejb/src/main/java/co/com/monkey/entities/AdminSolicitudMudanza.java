@@ -38,7 +38,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "AdminSolicitudMudanza.findByMudanzaFechaSolicitud", query = "SELECT a FROM AdminSolicitudMudanza a WHERE a.mudanzaFechaSolicitud = :mudanzaFechaSolicitud")
     , @NamedQuery(name = "AdminSolicitudMudanza.findByMudanzaFechaMudanza", query = "SELECT a FROM AdminSolicitudMudanza a WHERE a.mudanzaFechaMudanza = :mudanzaFechaMudanza")
     , @NamedQuery(name = "AdminSolicitudMudanza.findByMudanzaIdEmpresa", query = "SELECT a FROM AdminSolicitudMudanza a WHERE a.mudanzaIdEmpresa = :mudanzaIdEmpresa")
-    , @NamedQuery(name = "AdminSolicitudMudanza.findByMudanzaObservacion", query = "SELECT a FROM AdminSolicitudMudanza a WHERE a.mudanzaObservacion = :mudanzaObservacion")})
+    , @NamedQuery(name = "AdminSolicitudMudanza.findByMudanzaObservacion", query = "SELECT a FROM AdminSolicitudMudanza a WHERE a.mudanzaObservacion = :mudanzaObservacion")
+    , @NamedQuery(name = "AdminSolicitudMudanza.findCountPendientes", query = "SELECT COUNT(a) FROM AdminSolicitudMudanza a WHERE a.mudanzaIdConjunto = :idConjunto AND a.mudanzaEstado = 'PENDIENTE'")
+})
 public class AdminSolicitudMudanza implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,15 +49,15 @@ public class AdminSolicitudMudanza implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "mudanza_id")
-    private BigDecimal mudanzaId;
+    private Integer mudanzaId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "mudanza_id_usuario")
-    private BigInteger mudanzaIdUsuario;
+    private Integer mudanzaIdUsuario;
     @Basic(optional = false)
     @NotNull
     @Column(name = "mudanza_id_conjunto")
-    private BigInteger mudanzaIdConjunto;
+    private Integer mudanzaIdConjunto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -74,7 +76,7 @@ public class AdminSolicitudMudanza implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "mudanza_id_empresa")
-    private BigInteger mudanzaIdEmpresa;
+    private Integer mudanzaIdEmpresa;
     @Size(max = 255)
     @Column(name = "mudanza_observacion")
     private String mudanzaObservacion;
@@ -82,11 +84,11 @@ public class AdminSolicitudMudanza implements Serializable {
     public AdminSolicitudMudanza() {
     }
 
-    public AdminSolicitudMudanza(BigDecimal mudanzaId) {
+    public AdminSolicitudMudanza(Integer mudanzaId) {
         this.mudanzaId = mudanzaId;
     }
 
-    public AdminSolicitudMudanza(BigDecimal mudanzaId, BigInteger mudanzaIdUsuario, BigInteger mudanzaIdConjunto, String mudanzaEstado, Date mudanzaFechaSolicitud, Date mudanzaFechaMudanza, BigInteger mudanzaIdEmpresa) {
+    public AdminSolicitudMudanza(Integer mudanzaId, Integer mudanzaIdUsuario, Integer mudanzaIdConjunto, String mudanzaEstado, Date mudanzaFechaSolicitud, Date mudanzaFechaMudanza, Integer mudanzaIdEmpresa) {
         this.mudanzaId = mudanzaId;
         this.mudanzaIdUsuario = mudanzaIdUsuario;
         this.mudanzaIdConjunto = mudanzaIdConjunto;
@@ -96,27 +98,27 @@ public class AdminSolicitudMudanza implements Serializable {
         this.mudanzaIdEmpresa = mudanzaIdEmpresa;
     }
 
-    public BigDecimal getMudanzaId() {
+    public Integer getMudanzaId() {
         return mudanzaId;
     }
 
-    public void setMudanzaId(BigDecimal mudanzaId) {
+    public void setMudanzaId(Integer mudanzaId) {
         this.mudanzaId = mudanzaId;
     }
 
-    public BigInteger getMudanzaIdUsuario() {
+    public Integer getMudanzaIdUsuario() {
         return mudanzaIdUsuario;
     }
 
-    public void setMudanzaIdUsuario(BigInteger mudanzaIdUsuario) {
+    public void setMudanzaIdUsuario(Integer mudanzaIdUsuario) {
         this.mudanzaIdUsuario = mudanzaIdUsuario;
     }
 
-    public BigInteger getMudanzaIdConjunto() {
+    public Integer getMudanzaIdConjunto() {
         return mudanzaIdConjunto;
     }
 
-    public void setMudanzaIdConjunto(BigInteger mudanzaIdConjunto) {
+    public void setMudanzaIdConjunto(Integer mudanzaIdConjunto) {
         this.mudanzaIdConjunto = mudanzaIdConjunto;
     }
 
@@ -144,11 +146,11 @@ public class AdminSolicitudMudanza implements Serializable {
         this.mudanzaFechaMudanza = mudanzaFechaMudanza;
     }
 
-    public BigInteger getMudanzaIdEmpresa() {
+    public Integer getMudanzaIdEmpresa() {
         return mudanzaIdEmpresa;
     }
 
-    public void setMudanzaIdEmpresa(BigInteger mudanzaIdEmpresa) {
+    public void setMudanzaIdEmpresa(Integer mudanzaIdEmpresa) {
         this.mudanzaIdEmpresa = mudanzaIdEmpresa;
     }
 

@@ -1,11 +1,9 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package co.com.monkey.dto;
-
-import co.com.monkey.comunes.Mensajes;
 
 /**
  *
@@ -13,19 +11,22 @@ import co.com.monkey.comunes.Mensajes;
  */
 public class MensajeDTO {
 
-    private Mensajes codmensaje;
     private Object object;
     private String mensaje;
-    private codigoRespuesta codigoRespuesta;
-    
-    public codigoRespuesta getCodigoRespuesta() {
-        return codigoRespuesta;
+    private CodigoRespuesta codigoRespuesta;
+    private String fecha;
+
+    public enum CodigoRespuesta {
+        OK, ERROR
     }
 
-    public void setCodigoRespuesta(codigoRespuesta codigoRespuesta) {
-        this.codigoRespuesta = codigoRespuesta;
+    public Object getObject() {
+        return object;
     }
-    
+
+    public void setObject(Object object) {
+        this.object = object;
+    }
 
     public String getMensaje() {
         return mensaje;
@@ -35,31 +36,20 @@ public class MensajeDTO {
         this.mensaje = mensaje;
     }
 
-    public Mensajes getCodmensaje() {
-        return codmensaje;
+    public CodigoRespuesta getCodigoRespuesta() {
+        return codigoRespuesta;
     }
 
-    public void setCodmensaje(Mensajes codmensaje) {
-        this.codmensaje = codmensaje;
+    public void setCodigoRespuesta(CodigoRespuesta codigoRespuesta) {
+        this.codigoRespuesta = codigoRespuesta;
     }
 
-    public Object getObject() {
-        return object;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setObject(Object object) {
-        this.object = object;
-
-    }
-
-    @Override
-    public String toString() {
-        return "MensajeDTO{" + "codmensaje=" + codmensaje + ", object=" + object + ", mensaje=" + mensaje + '}';
-    }
-    
-    public enum codigoRespuesta {
-
-        OK, ERROR
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
 }

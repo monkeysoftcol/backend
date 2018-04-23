@@ -29,7 +29,7 @@ public class AdminMudanzaLogica {
     public MensajeDTO cantidadSolitudesMudanzaPendientes(final Integer idConjunto) {
         MensajeDTO salida = new MensajeDTO();
         Integer cantidadPendientes = adminSolicitudMudanzaDAO.solicitudesPendientes(idConjunto);
-        salida.setCodmensaje(Mensajes.OK);
+        salida.setCodigoRespuesta(MensajeDTO.CodigoRespuesta.OK);
         salida.setObject(cantidadPendientes);
         return salida;
     }
